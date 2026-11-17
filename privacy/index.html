@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Carthexia</title>
+<meta name="description" content="How carthexia.com and the Neon Rot web demo handle your data.">
+<link rel="icon" href="/media/logo.svg" type="image/svg+xml">
+
+<style>
+@font-face{font-family:Oxanium;font-weight:800;font-display:swap;src:url(/fonts/oxanium-latin-800-normal.woff2) format('woff2')}
+:root{color-scheme:dark;--ink:#0a0910;--line:#2a2540;--text:#ece6f6;--dim:#a69fbd;--gold:#e2b04a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--text);font:17px/1.65 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+main{width:min(720px,100% - 32px);margin:0 auto;padding:48px 0 80px}
+a{color:var(--gold)}
+.back{display:inline-flex;align-items:center;gap:10px;color:var(--dim);text-decoration:none;font-size:15px}
+.back svg{width:26px;height:26px}
+h1{font:800 clamp(34px,6vw,48px)/1.05 Oxanium,system-ui,sans-serif;margin:36px 0 8px}
+h2{font:800 22px/1.2 Oxanium,system-ui,sans-serif;margin:36px 0 8px}
+p,li{color:var(--dim)}
+p strong,li strong{color:var(--text)}
+.date{font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M84.6 30L50 10 15.4 30v40L50 90l34.6-20" fill="none" stroke="#e2b04a" stroke-width="9"/><path d="M50 37l11.3 6.5v13L50 63l-11.3-6.5v-13z" fill="#b23a8c"/></svg>Carthexia Game Studio</a>
+  <h1>Privacy</h1>
+  <p class="date">Last updated 17 November 2026</p>
+
+  <h2>This website</h2>
+  <p>carthexia.com counts visits with <a href="https://www.goatcounter.com">GoatCounter</a>, a privacy-friendly analytics service. It sets <strong>no cookies</strong> and stores no personal data: it records the page visited, the referring site, the browser, the screen size and the country (worked out from the IP address, which is not stored). We use the totals to see which pages people read and which links they follow. Nothing is used for advertising or shared with anyone else.</p>
+
+  <h2>The Neon Rot web demo</h2>
+  <p>The demo at <a href="/neon-rot/">carthexia.com/neon-rot</a> saves your progress (best scores, last sector, sound settings) in your own browser's local storage. It never leaves your device. Clearing your browser's site data deletes it. The demo is counted by GoatCounter as described above, including taps on its App Store button.</p>
+
+  <h2>The Neon Rot app</h2>
+  <p>The iPhone app collects no data. Its own policy is <a href="https://github.com/abenhmidane/neon-rot-site/blob/main/PRIVACY.md">here</a>.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about privacy: <a href="mailto:contact@carthexia.com">contact@carthexia.com</a>.</p>
+</main>
+</body>
+</html>

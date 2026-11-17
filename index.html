@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carthexia Game Studio</title>
+<meta name="description" content="Carthexia is an independent game studio. Our first game, Neon Rot, is a turn-based zombie puzzle for iPhone. Play the demo in your browser.">
+<link rel="icon" href="/media/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/media/logo-180.png">
+<link rel="canonical" href="https://carthexia.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Carthexia Game Studio">
+<meta property="og:title" content="Carthexia Game Studio">
+<meta property="og:description" content="An independent game studio. Our first game, Neon Rot, is out on iPhone. Play the demo in your browser.">
+<meta property="og:url" content="https://carthexia.com/">
+<meta property="og:image" content="https://carthexia.com/media/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-itunes-app" content="app-id=6833462784">
+
+<style>
+@font-face{font-family:Oxanium;font-weight:600;font-display:swap;src:url(/fonts/oxanium-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:Oxanium;font-weight:800;font-display:swap;src:url(/fonts/oxanium-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Share Tech Mono';font-weight:400;font-display:swap;src:url(/fonts/share-tech-mono-latin-400-normal.woff2) format('woff2')}
+:root{
+  color-scheme:dark;
+  --ink:#0a0910; --ink-2:#12101c; --ink-3:#1b1828; --line:#2a2540;
+  --text:#ece6f6; --dim:#a69fbd; --gold:#e2b04a; --gold-hi:#f4cf7a; --tyrian:#b23a8c; --tyrian-hi:#d65aae;
+  --rot-pink:#ff2f8e; --rot-green:#a8ff3e; --rot-cyan:#2be4ff;
+  --display:Oxanium,system-ui,sans-serif; --mono:'Share Tech Mono',ui-monospace,monospace;
+  --body:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --wrap:1120px; --gut:clamp(16px,5vw,40px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ink);color:var(--text);font:16px/1.6 var(--body);overflow-x:hidden}
+a{color:inherit}
+img,video{display:block;max-width:100%}
+.wrap{width:min(var(--wrap),100% - 2*var(--gut));margin-inline:auto}
+.eyebrow{margin:0 0 14px;font:400 13px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;letter-spacing:.01em;margin:0;text-wrap:balance}
+p{text-wrap:pretty}
+
+/* buttons: cut corners, the studio's gold and the game's pink */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 24px;font:600 15px/1 var(--display);letter-spacing:.1em;
+  text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--gold);
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:background .15s,transform .15s}
+.btn:hover{background:var(--gold-hi)}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+.btn.ghost{color:var(--text);background:var(--line);position:relative;isolation:isolate}
+.btn.ghost::before{content:"";position:absolute;inset:1px;z-index:-1;background:var(--ink-2);clip-path:inherit}
+.btn.ghost:hover{background:var(--dim)}
+.btn.rot{color:#fff;background:linear-gradient(180deg,var(--rot-pink),#b01a62)}
+.btn.rot:hover{background:linear-gradient(180deg,#ff5aa6,#c8226f)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* header */
+header.top{position:sticky;top:0;z-index:10;background:rgba(10,9,16,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,37,64,.6)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:34px;height:34px}
+.brand b{font:800 19px/1 var(--display);letter-spacing:.2em}
+.brand small{display:block;margin-top:4px;font:400 10px/1 var(--mono);letter-spacing:.3em;color:var(--dim)}
+nav.links{display:flex;gap:clamp(14px,3vw,30px)}
+nav.links a{font:600 14px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--dim);padding:8px 0}
+nav.links a:hover{color:var(--text)}
+@media (max-width:560px){.brand small{display:none}nav.links a.opt{display:none}}
+
+/* hero */
+.hero{position:relative;padding:clamp(56px,11vw,120px) 0 clamp(56px,9vw,100px);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0l28 16v32L28 64 0 48V16zM28 64v33' fill='none' stroke='%232a2540' stroke-width='1'/%3E%3C/svg%3E");
+  -webkit-mask-image:radial-gradient(ellipse 70% 80% at 70% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 70% 80% at 70% 40%,#000 20%,transparent 75%)}
+.hero::after{content:"";position:absolute;z-index:-1;width:720px;height:720px;right:-200px;top:-260px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(178,58,140,.32),transparent)}
+.hero h1{font-size:clamp(42px,8.4vw,92px);max-width:13ch}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{margin:24px 0 0;max-width:560px;font-size:clamp(17px,2.2vw,20px);color:var(--dim)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* sections */
+section{padding:clamp(60px,9vw,110px) 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(32px,5vw,52px)}
+
+/* the game */
+.game{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,6vw,72px);align-items:center;margin-top:44px}
+.phone{position:relative;border-radius:40px;padding:8px;background:#05040a;box-shadow:0 0 0 2px var(--rot-cyan),0 0 60px rgba(43,228,255,.25),0 30px 80px rgba(0,0,0,.6)}
+.phone video{width:100%;aspect-ratio:9/16;border-radius:32px;object-fit:cover;background:#07060e}
+.game .title{display:flex;align-items:center;gap:18px}
+.game .title img{width:84px;height:84px;border-radius:20px;box-shadow:0 0 0 1px var(--line)}
+.game h3{font-size:clamp(40px,6vw,64px);text-transform:uppercase;letter-spacing:.04em;color:#ffe3f1;text-shadow:0 0 12px rgba(255,47,142,.8),0 0 40px rgba(255,47,142,.45)}
+.game h3 span{color:#e6ffc4;text-shadow:0 0 12px rgba(168,255,62,.75),0 0 40px rgba(168,255,62,.4)}
+.game .kind{margin:6px 0 0;font:400 13px/1.3 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--rot-cyan)}
+.game p.pitch{margin:24px 0 0;font-size:clamp(17px,2vw,19px)}
+.game ul{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:var(--dim)}
+.game li{position:relative;padding-left:22px}
+.game li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;background:var(--rot-green);transform:rotate(45deg)}
+.game .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.game .small{margin:16px 0 0;font-size:14px;color:var(--dim)}
+@media (max-width:760px){.game{grid-template-columns:1fr}.phone{max-width:300px;margin-inline:auto;order:2}}
+
+.shots{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:56px;padding:4px var(--gut) 18px;
+  margin-inline:calc(50% - 50vw);scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+@media (min-width:1200px){.shots{margin-inline:0;padding-inline:0;justify-content:space-between}}
+.shots img{flex:none;width:min(190px,44vw);aspect-ratio:1206/2622;height:auto;border-radius:18px;scroll-snap-align:start;box-shadow:0 0 0 1px var(--line)}
+
+.next{margin-top:56px;padding:26px 28px;display:flex;align-items:center;gap:18px;border:1px dashed var(--line);color:var(--dim)}
+.next svg{width:30px;height:30px;flex:none}
+.next b{color:var(--text);font-family:var(--display);letter-spacing:.06em}
+
+/* studio */
+.studio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,72px)}
+.studio p{margin:0 0 16px;color:var(--dim);font-size:17px}
+.studio p:first-child{color:var(--text)}
+.values{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.values li{padding:20px 22px;background:var(--ink-2);border-left:3px solid var(--tyrian)}
+.values b{display:block;font:800 18px/1.2 var(--display);letter-spacing:.04em;margin-bottom:4px}
+.values span{color:var(--dim);font-size:15px}
+@media (max-width:760px){.studio{grid-template-columns:1fr}}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:28px}
+.contact p{margin:16px 0 0;color:var(--dim);max-width:520px}
+.contact .mail{font:800 clamp(22px,4vw,34px)/1.1 var(--display);color:var(--gold);text-decoration:none;word-break:break-all}
+.contact .mail:hover{color:var(--gold-hi)}
+
+footer{padding:34px 0 44px;border-top:1px solid var(--line);color:var(--dim);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Carthexia Game Studio, home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M84.6 30L50 10 15.4 30v40L50 90l34.6-20" fill="none" stroke="#e2b04a" stroke-width="9" stroke-linejoin="miter"/><path d="M50 37l11.3 6.5v13L50 63l-11.3-6.5v-13z" fill="#b23a8c"/></svg>
+      <span><b>CARTHEXIA</b><small>GAME STUDIO</small></span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#games">Games</a>
+      <a class="opt" href="#studio">Studio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Independent game studio</p>
+      <h1>Small games with <em>sharp edges.</em></h1>
+      <p class="lead">Carthexia makes tight, hand-built puzzle games for your phone and your browser. Our first game, Neon Rot, is out now on iPhone.</p>
+      <div class="ctas">
+        <a class="btn rot" href="/neon-rot/" data-goatcounter-click="hero-play-demo">Play Neon Rot free</a>
+        <a class="btn ghost" href="#games">Our games</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="games">
+    <div class="wrap">
+      <p class="eyebrow">Game 01 · Out now</p>
+      <h2>Games</h2>
+      <div class="game">
+        <div class="phone">
+          <video src="/media/neon-rot-trailer.mp4" poster="/media/trailer-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Neon Rot trailer"></video>
+        </div>
+        <div>
+          <div class="title">
+            <img src="/media/neon-rot-icon.webp" width="84" height="84" alt="Neon Rot app icon">
+            <div><h3>Neon <span>Rot</span></h3><p class="kind">Turn-based zombie puzzle · iPhone</p></div>
+          </div>
+          <p class="pitch">You are patient zero. Every human you bite joins your horde and copies every move you make. One wrong step and the whole horde walks into the light.</p>
+          <ul>
+            <li>Hand-built rooftop puzzles, each solvable to a par</li>
+            <li>Crates, transit pads, turrets, ice, patrols and the breaker</li>
+            <li>Unlimited undo and a hint for every move</li>
+            <li>District 1 free. One purchase unlocks the rest. No ads.</li>
+          </ul>
+          <div class="ctas">
+            <a class="btn rot" href="/neon-rot/" data-goatcounter-click="game-play-demo">Play the demo</a>
+            <a class="btn" href="https://apps.apple.com/app/neon-rot/id6833462784" target="_blank" rel="noopener" data-goatcounter-click="game-app-store">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2.1-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM13.9 4.9c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>
+              App Store
+            </a>
+          </div>
+          <p class="small">The demo runs in any modern browser, on phone or desktop: the first 12 sectors, free.</p>
+        </div>
+      </div>
+
+      <div class="shots" role="list" aria-label="Neon Rot screenshots">
+        <img role="listitem" src="/media/shot-01-start.webp" width="540" height="1174" loading="lazy" alt="Neon Rot title screen over a neon rooftop">
+        <img role="listitem" src="/media/shot-02-district1.webp" width="540" height="1174" loading="lazy" alt="Bite one and now you are two: the horde copies your every step">
+        <img role="listitem" src="/media/shot-03-district2.webp" width="540" height="1174" loading="lazy" alt="The city fights back with crates, turrets and laser gates">
+        <img role="listitem" src="/media/shot-04-district3.webp" width="540" height="1174" loading="lazy" alt="Ice that will not let you stop">
+        <img role="listitem" src="/media/shot-05-win.webp" width="540" height="1174" loading="lazy" alt="Match par for three skulls">
+        <img role="listitem" src="/media/shot-06-sectors.webp" width="540" height="1174" loading="lazy" alt="The sector map">
+      </div>
+
+      <div class="next">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10l34.6 20v40L50 90 15.4 70V30z" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="10 8"/></svg>
+        <p style="margin:0"><b>Game 02</b> is in the works.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="studio">
+    <div class="wrap">
+      <p class="eyebrow">The studio</p>
+      <h2 style="margin-bottom:36px">Carthexia</h2>
+      <div class="studio">
+        <div>
+          <p>Carthexia is a small independent studio. We make games that fit in a pocket and still ask something of you: few rules, many consequences.</p>
+          <p>Every level is built by hand and checked by a solver before it ships, so every puzzle is fair and has a best answer to chase.</p>
+        </div>
+        <ul class="values">
+          <li><b>Hand-built</b><span>No procedural filler. Every board is placed, tested and solved.</span></li>
+          <li><b>Fair</b><span>No ads, no timers, no energy. Pay once, or play the free part forever.</span></li>
+          <li><b>Everywhere</b><span>On iPhone, and in the browser for anyone who wants a taste first.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Say hello</h2>
+        <p>Press, partnerships, players with a sector they cannot crack: write to us.</p>
+      </div>
+      <a class="mail" href="mailto:contact@carthexia.com">contact@carthexia.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Carthexia Game Studio</span>
+    <nav aria-label="Footer">
+      <a href="/neon-rot/">Neon Rot demo</a>
+      <a href="https://github.com/abenhmidane/neon-rot-site/blob/main/PRESS.md">Press kit</a>
+      <a href="https://github.com/abenhmidane/neon-rot-site">Neon Rot support</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+  </div>
+</footer>
+<script>
+// pause the trailer when it is off screen or when the visitor prefers less motion
+(() => {
+  const v = document.querySelector('.phone video');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; return; }
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: .25 }).observe(v);
+})();
+</script>
+</body>
+</html>
